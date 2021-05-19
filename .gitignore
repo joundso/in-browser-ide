@@ -1,0 +1,21 @@
+## Ignore everything
+/*
+/*/
+
+## But not these files...
+!.gitignore
+!docker-compose.yml
+!renovate.json
+!README.md
+!grafana_dashboard_version_02_03_2020.json
+
+## Include this folder and all of its content:
+!/shinyproxy
+
+## Ignore this folders content:
+# /shinyproxy/*
+
+## Ignore this folders content:
+/shinyproxy/env/*.env
+
+

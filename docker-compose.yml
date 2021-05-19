@@ -1,0 +1,25 @@
+version: "3.9" # optional since v1.27.0
+services:
+  shinyproxy:
+    build: ./shinyproxy
+    # image: openanalytics/shinyproxy:2.5.0
+    ports:
+      ## xxx:8080 for shinyproxy itself:
+      - 9000:8080
+      ## xxx:9090 for prometheus:
+      - 9001:9090
+    # environment:
+    #   - "WORK_DIR=${PWD}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./shinyproxy/application.yml:/opt/shinyproxy/application.yml"
+      - "./shinyproxy/env:/opt/shinyproxy/env"
+      - "./shinyproxy/templates:/opt/shinyproxy/templates"
+      - "./shinyproxy-logs/server:/log"
+      - "./shinyproxy-logs/container:/container-logs"
+    networks:
+      shinyproxy-net:
+
+networks:
+  shinyproxy-net:
+    name: shinyproxy-net

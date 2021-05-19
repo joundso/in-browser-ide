@@ -1,0 +1,80 @@
+## For configuration information see here: <https://www.shinyproxy.io/documentation/configuration/>
+proxy:
+  title: In-Browser-IDE Proxy
+  port: 8080
+  hide-navbar: true
+  template-path: ./templates/1col
+  container-log-path: /container-logs
+  authentication: none
+
+  # authentication: simple
+  # admin-groups: admin
+  # # Example: 'simple' authentication configuration
+  # users:
+  #   - name: admin
+  #     password: password
+  #     groups: admin
+
+  ## Single-Sign On / Keycloak:
+  ## <https://www.shinyproxy.io/documentation/configuration/#single-sign-on--keycloak>
+  # keycloak:
+  #   realm: yoursso
+  #   auth-server-url: http://yoururl.com:8180/auth
+  #   resource: yourresource
+  #   credentials-secret: your-credentials-secret
+
+  ## Docker settings:
+  ## <https://www.shinyproxy.io/documentation/configuration/#docker>
+  ## Use this OR Kubernets but not both.
+  container-backend: docker
+  docker:
+    internal-networking: true
+    container-network: shinyproxy-net
+
+  ## Kubernetes:
+  ## <https://www.shinyproxy.io/documentation/configuration/#kubernetes>
+  # container-backend: kubernetes
+  # kubernetes:
+  #   cert-path: /etc/certs
+  #   url: https://1.2.3.4
+
+  ## Container settings:
+  ## <https://www.shinyproxy.io/documentation/configuration/#apps>
+  specs:
+    - id: rstudio
+      display-name: RStudio
+      description: RStudio is an integrated development environment (IDE) for the R programming language.
+      container-cmd: []
+      port: 8787
+      container-image: joundso/rdsc_rstudio_j:latest
+      container-network: "${proxy.docker.container-network}"
+      # container-env-file: /opt/shinyproxy/env/rstudio.env
+      # container-env:
+      #   another_key: another_value
+      # container-volumes: [ "/host/path1:/container/path1", "/host/path2:/container/path2" ]
+    - id: vscode
+      display-name: Visual Studio Code
+      description: Visual Studio Code is a freeware source-code editor made by Microsoft.
+      container-cmd: []
+      port: 8080
+      container-image: vscode-image:latest
+      container-network: "${proxy.docker.container-network}"
+      # container-env-file: /opt/shinyproxy/env/vscode.env
+
+  ## Enable metric export for prometheus/grafana:
+  usage-stats-url: micrometer
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+logging:
+  file: /log/shinyproxy.log
+
+server:
+  servlet:
+    context-path: /
+  ## Change timeout for sessions to 1h:
+  servlet.session.timeout: 3600
