@@ -8,6 +8,8 @@
 !renovate.json
 !README.md
 !grafana_dashboard_version_02_03_2020.json
+!.env
+!startup.sh
 
 ## Include this folder and all of its content:
 !/shinyproxy

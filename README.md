@@ -19,7 +19,7 @@
 2. Run the container:
 
     ```bash
-    docker-compose up -d
+    sudo bash ./startup.sh
     ```
 
 3. Go to [`localhost:9000`](http://localhost:9000) (or whatever port you specified in your docker-compose file) and select one of the images you have specified in the [`shinyproxy/application.yml`](./shinyproxy/application.yml) file.
@@ -27,8 +27,9 @@
    2. **Visual Studio Code** is now available at [`localhost:9000/app/vscode`](http://localhost:9000/app/vscode)
 
 4. This should be similar to what you can see now:
-
   ![IDEs running in the browser](./.img/browser_demo.png)
+
+5. Stop the environment by running `docker-compose down`.
 
 ## Advanced usage
 
