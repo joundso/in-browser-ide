@@ -22,7 +22,7 @@
     docker-compose up -d
     ```
 
-3. Go to <localhost:9000> (or whatever port you specified in your docker-compose file) and select one of the images you have specified in the `application.yml` file.
+3. Go to [`localhost:9000`](localhost:9000) (or whatever port you specified in your docker-compose file) and select one of the images you have specified in the `application.yml` file.
    1. **RStudio** is now available at [`localhost:9000/app/rstudio`](http://localhost:9000/app/rstudio)
    2. **Visual Studio Code** is now available at [`localhost:9000/app/vscode`](http://localhost:9000/app/vscode)
 
