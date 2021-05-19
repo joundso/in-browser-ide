@@ -26,6 +26,10 @@
    1. **RStudio** is now available at [`localhost:9000/app/rstudio`](http://localhost:9000/app/rstudio)
    2. **Visual Studio Code** is now available at [`localhost:9000/app/vscode`](http://localhost:9000/app/vscode)
 
+4. This should be similar to what you can see now:
+
+  ![IDEs running in the browser](./.img/browser_demo.png)
+
 ## Advanced usage
 
 ### Enable Authentication

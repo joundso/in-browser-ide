@@ -11,9 +11,13 @@
 
 ## Include this folder and all of its content:
 !/shinyproxy
+!/.img
 
 ## Ignore this folders content:
-# /shinyproxy/*
+/.img/*
+
+## But not these files...
+!/.img/browser_demo.png
 
 ## Ignore this folders content:
 /shinyproxy/env/*.env
